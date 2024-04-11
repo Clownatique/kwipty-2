@@ -1,0 +1,189 @@
+{% extends 'baseavecnavbar.html' %}
+{% block title %}Résumé{% endblock %}
+{% load static %}
+{% block style %}
+menu{ 
+    display: flex;
+    max-height: 95vh;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20vw;
+}
+
+.liste-matiere{
+    overflow-y: auto; 
+}
+
+.categorie{
+    max-height: 25vh;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}
+
+.options-fixes{
+    display: flex;
+    justify-content: space-evenly;
+}
+.categorie{
+    border:#9f6500 solid 1px;
+}
+.bloc_cours{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    
+    }
+.bloc_cours{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    height:6vh;
+    border-style: solid;
+    padding-left: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 10px 10px 5px lightblue;
+}
+
+.intitule{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+    font-size: 25px;
+
+}
+
+.contenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.info{
+    display: flex;
+    max-height: 25vh;
+    height:25vh;
+    width: 60vw;
+    border-style: solid;
+    background-color: gainsboro;
+    border-color: #b3b3b3;
+    border-radius: 15px;
+}
+.cours{
+    flex-direction: row;
+    justify-content: space-between;
+}
+.stats{
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    margin-right: 85px;
+}
+.cartes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+}
+.cartes .progression{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.progression a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    scale: 2;
+}
+
+.progression a:hover{
+    scale: 3;
+    rotate: 2deg;
+    column-rule-color: #9f6500;
+}
+.info_revision{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px;
+    list-style: none;
+}
+.liste_cours{
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+.reviser{
+    display: flex;
+    align-items: center;
+}
+.exercices{
+    display: flex;
+    column-gap: 5%;
+    overflow: hidden;
+    padding-left: 0;
+    overflow-x: scroll;
+}
+.exercices p{
+    width: 40%;
+}
+.exo{
+    width: max-content;
+}{% endblock style %}
+{% block content %}
+<div class="contenu">
+    {{deck}}
+    {{tout}}
+
+    {{deck.cartes}}
+    <div class="info cours">
+        <div class="intitule">
+            <h1>Vue d'ensemble</h1>
+        </div>
+        <div class="stats">
+            <p>Nombre de cartes:  {{deck.cartes}}</p>
+        </div>
+    </div>
+    <div class="info cartes">
+        {% if cartes is not None %}
+        <a class="reviser" href="{% url 'reviser_cartes' revision_instance.id %}">
+            <button>
+                Revoir toute vos cartes
+            </button>
+        </a>
+        {% else %}
+        <a class="reviser">
+            <a class="reviser" href="{% url 'reviser-cartes' %}">
+                <button>
+                    Revoir toute vos cartes
+                </button>
+            </a>
+            <a class="reviser" href="{% url 'creer-carte' %}">
+                <button>
+                    Créer des cartes
+                </button>
+            </a>
+            <a class="reviser" href='{% url 'voir-cartes-disponibles' %}'>
+                <button>
+                    Rechercher des cartes parmis celle déjà existente
+                </button>
+             </a>
+             <a class="reviser" href='{% url 'voir-deck' %}'>
+                <button>
+                    Voir deck
+                </button>
+             </a>
+        {% endif %}
+    </div>
+    <div class="info reviser">
+        <a href='{% url 'creer-cours' %}' class='reviser'><button>creer cours</button></a>
+        <a href='{% url 'liste-cours' %}' class='reviser'><button>liste cours</button></a>
+    </div>
+</div>
+{% endblock %}

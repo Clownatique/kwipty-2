@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Nunito;
+    src: url(Nunito-VariableFont_wght.ttf);
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    margin: 0; /* Remove default margin */
+    font-family: Nunito;
+}
+
+.boxTest {
+    display: flex;
+    flex-direction: column; /* Change to column to stack items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: space-between; /* Center vertically */
+    border-style: solid;
+    box-shadow: 10px 10px 5px lightblue;
+    gap: 20px;    
+    width: 45%;
+}
+
+.exemple{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.conjugaison{
+    display: flex;
+    flex-direction: column;
+}
+
+.condition{
+    display: flex;
+    flex-direction: column;
+    column-gap: 2px;
+    margin: 0;
+}
+
+.condition p{
+    margin: 0px;
+    font-size: small;
+}
+
+.phrase {
+    font-size: 25px;
+    max-width: 35rem;
+    margin: 10px;
+}
+
+.verif{
+    display: flex;
+    align-items: center;
+}

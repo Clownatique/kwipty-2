@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - EN 5 MINUTES</title>
+    {% load static %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type ="text/javascript"{% block scriptperso %}{% endblock scriptperso %}></script>
+    <link href="{% static 'compte/focus.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% block css %}{% endblock css %}" type ="text/css" rel="stylesheet">
+</head>
+<body class = "vignette">
+    <header>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer>
+
+    </footer>
+</body>
+</html>

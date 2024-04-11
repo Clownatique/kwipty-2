@@ -1,0 +1,35 @@
+{% extends 'compte/authentificationbase.html' %}
+
+{% load static %}
+{% block style %}
+  {% endblock style %}
+{% block content %}
+  <div class="login-container">
+      <h2>Connexion</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+        <button type="submit" class="validation" >Réviser !</button>
+      </form>
+    
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form.email.label_tag }} {{ form.email }}
+        <a type="submit">J'ai une mémoire pas terrible..</a>
+      </form>
+  </div>
+
+
+  <div class="newAccount">
+    <a href='{% url 'inscription' %}'>
+      Besoin de créer un compte?
+    </a>
+  </div>
+
+{% endblock %}

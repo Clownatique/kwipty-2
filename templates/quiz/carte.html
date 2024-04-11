@@ -1,0 +1,24 @@
+{% extends 'focus.html' %}
+{% block title %}FLASHCARTES{% endblock title %}
+{% load static %}
+{% block css %}{% static 'quiz/card.css' %}{% endblock css %}
+{% block script %}src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"{% endblock script %}
+{% block scriptperso %}src = "{% static 'quiz/card.js' %}" defer{% endblock scriptperso %} 
+
+{% block content %}
+<div class="metaQuestion">
+    <div class="carte" id="carte" onclick="montrerReponse();" >
+      <div class="front">
+        {{carte.devant}}
+      </div>
+      <div class="back">
+        {{carte.dos}}
+      </div>
+    </div>
+</div>
+<form method="post" action="" id="form">
+  {% csrf_token %}
+  {{ forme }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock content %}

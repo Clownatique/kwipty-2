@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'focus.html' %}
+{% block title %}Exercice de maths{% endblock title %}
+{% block script %} async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"{% endblock script %}
+{% load static %}
+{% block scriptperso%} href = "{% static 'exercices/exo_math.js' %}"{% endblock %}
+{% block css %}{% static '/exercices/exo_math.css' %}{% endblock css %}
+
+{% block content %}
+    <div class="parentExoDiv">
+        <div class="contexte">
+            On considère les plans P1, P2 et P3 définis respectivement par les équations cartésiennes suivantes.<br>
+            <math> $$ P1 : −3x + 2y + 5z + 1 = 0 ; P2 : 2x + y + z = 0 ; P3 : y − z + 5 = 0 $$ </math>
+        </div>
+        <div class="question">
+            1. On considère le vecteur \vec{w}(0,−200,200) A quel plan ce vecteur est-il normal ?
+            2. Quelle est la position relative des plans P2 et P3 ?
+        </div>
+
+        <div class="reponse">
+            <input type="text">
+        </div>
+        <div class="reponseOrdi" id="correction">
+            On calcule le discriminant.<br>
+            $$
+            \begin{align}
+            \Delta &= b^2-4ac\\
+            &= {{coefficient.1}}^2 - 4 \times {{coefficient.0}} \times {{coefficient.2}}\\
+            &= {{discriminant}}\\
+            \end{align}
+            $$
+            <br>
+            $$\Delta $$ est {% if discriminant < 0  %} \Delta < 0 <br>
+            Donc les racines sont :
+            $$x_1 = \dfrac{- {{coefficient.1}} + \sqrt{\Delta}}{2 \times {{coefficient.0}}}$$ {% endif %} <br>
+            Donc les racines sont définies par :
+        </div>
+        <div class="switch" onclick="montrerCorrection()">
+            <button>switch</button>
+        </div>
+    </div>
+    <script>
+        const exercice_json ={{ exercice|safe }};
+    </script>
+{% endblock content %}

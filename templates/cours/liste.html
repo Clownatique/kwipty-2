@@ -1,0 +1,12 @@
+{% extends 'baseavecnavbar.html' %}
+
+{% block content %}
+{% for cour, queryset in cours.items %}
+    <h2>{{ cour }}</h2>
+    <ul>
+    {% for item in queryset %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock content %}

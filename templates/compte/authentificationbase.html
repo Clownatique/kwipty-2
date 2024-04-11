@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès à votre compte</title>
+    <style>
+        body{
+            background-color: aqua;
+            width: 100vw;
+            height: 100vh;
+            margin:0
+        }
+        .carre{
+            border:solid blue;
+            background-color: aquamarine;
+            width: 25vw;
+            margin: auto;
+            margin-top: auto;
+            padding:2px;
+            height:30vh;
+            box-shadow: 10px 10px 10px 10px red ;
+        }
+
+        .fieldWrapper{
+        padding:12px;
+        border: solid black 1px;
+        filter: brightness(90%);
+        margin:5px;
+        background-color: aliceblue;
+
+        }
+        .fieldWrapper ul{
+            margin:0;
+            padding: 0;
+        }
+        .fieldWrapper li{
+            list-style: none;
+            color: red;
+            background-color: aliceblue;
+            padding: 2px;
+            border-radius: 3px;
+        }
+        {% block style%} {% endblock style%}
+    </style>
+</head>
+<body>
+    <div class="carre">
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{% extends 'baseavecnavbar.html' %}
+{% block content %}
+    <form method='post'>
+        {% csrf_token %}
+        {{forme.as_div}}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'baseavecnavbar.html' %}
+{% block style %}
+.carte{
+  border-style:solid;
+  display: flex;
+  margin: 20px;
+  justify-content:space-between;
+}
+{% endblock %}
+{% block content %}
+<ul>
+{% for carte in cartes %}
+<div class="carte">
+  <a href ="{% url 'reviser-carte' carte.id %}">
+    <p>{{carte.carte.devant | truncatechars:255 }} {{carte.carte.dos | truncatechars:255}}</p>
+  </a>
+  <p>{{carte.date_de_revue}}</p>
+  <button>Éditer cette carte</button>
+  <a href={% url 'supprimer-carte' carte.id %}> <button>Supprimer cette carte</button></a>
+</div>
+{% endfor %}
+<ul>
+{% endblock content %}
+
+<!--pourquoi utiliser une balise q ? il faut pouvoir cliquer sur la carte et accèder 
+au lien suivant : {% url 'reviser-carte' carte.id %} (quel balise peut on utiliser pour mettre des liens?)
+
+
+Comprends bien que grace à la views qui va traiter ton template,
+tu peux utiliser entre des accolades le dictionnaires cartes, qui est une sorte de
+dictionnaire avec plusieurs objets flashcartes.
+
+"la carte" est affiché de cette manière :
+on a les 12 premiers caractères de la question, et les 12 premiers caractères de 
+la réponse séparé par un tiret.
+
+sur la même ligne ou tout cela est affiché, il y'aura aussi des informations 
+concernant la révision de cette carte par l'utilisateur
+
+tu n'as donc jamais finis de modifier ce fichier, mais pour l'instant affiche simplement la carte 
+sans ces informations en plus.
+(qui de toute façon, ne sont pas encore disponibles.)
+
+
+je t'ai mâché le travail, mais il va falloir que tu lise et comprenne ce que font ces
+fichiers:
+quiz/urls.py 
+quiz/models.py (class.Carte)
+quiz/views.py (function.reviser_carte, function.voir_cartes)-->

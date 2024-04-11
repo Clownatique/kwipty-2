@@ -1,0 +1,16 @@
+{% extends 'compte/authentificationbase.html' %}
+{% load static %}
+{% block css %}{% static 'compte/inscription.css'%}{% endblock css %}
+{% block content %}
+  <form method="post">
+    <h2>S'inscrire sur Kwipty</h2>
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.label_tag }} {{ field }}
+            {% if field.errors %}{{ field.errors }}{% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit">INSCRIPTION</button>
+  </form>
+{% endblock %}

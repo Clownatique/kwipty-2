@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Carte disponibles</title>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap')
+                
+                @font-face {
+                font-family: Nunito;
+                src: url(Nunito-VariableFont_wght.ttf);
+                }
+            body{
+                font-family: Nunito;
+                display: flex;
+                width: 100vw;
+                height: 100vh;
+                margin:0;
+            }
+                .navbar{
+                    height: 100vh;
+                    background-color: aliceblue;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    padding:0;
+                }
+                .nav-buttons {
+                    text-decoration:none;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 200px;
+                    background-color: #f1f1f1;
+                  }
+                  .nav-buttons :link{
+
+                    text-decoration:none;
+                  }
+                  .nav-buttons :hover{
+                    background-color: red;
+                  }
+                .content{
+                    width:90vw;
+                    justify-content:center
+                    flex-direction:row;
+                }
+                nav ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                
+                nav ul li {
+                    display: block;
+                    padding: 10px;
+                }
+                
+                nav {
+                    display: none;
+                }
+                
+                .navbar-open {
+                    display: block;
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+                
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+                {% block style %}
+                {% endblock %}
+            </style>
+        </head>
+        
+    <body>
+        <header>
+            <h1>Kwipty</h1>
+            <button id="toggleNav">Menu</button>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="{% url 'accueil'%}">Accueil</a></li>
+                    <li><a href="#">Cours</a></li>
+                    <li><a href="#">Exercices</a></li>
+                    <li><a href="#">Quizs</a></li>
+                    <li><a href="#">À propos</a></li>
+                </ul>
+                <div class='connect'>
+                    {% if utilisateur.is_authenticated %}
+                    <p>Bonjour {{utilisateur.prenom}} !</p>
+                    <a href={% url 'menu' %}>Accèder à Kwipty</a> 
+                    <a href={% url 'logout' %}>Se déconnecter</a>
+                    {% else %}
+                    <a href={% url 'connexion' %}>Se connecter</a>
+                    {%endif%}
+                </div>
+                </div>
+            </nav>
+        </header>
+        </div>
+        <div class="content">
+        {% block content %}
+        {% endblock %}
+        </div>
+        <script>
+            document.getElementById('toggleNav').addEventListener('click', function() {
+                var navbar = document.getElementById('navbar');
+                navbar.classList.toggle('navbar-open');
+            });
+        </script>            
+    </body>
+</html>
